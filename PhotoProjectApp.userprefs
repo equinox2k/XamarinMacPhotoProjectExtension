@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{F9BD52EE-4B5E-4033-B778-CFE562DC9021}|Default">
+  <MonoDevelop.Ide.ItemProperties.PhotoProjectApp PreferredExecutionTarget="Test1" />
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="PhotoProjectApp/AppDelegate.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

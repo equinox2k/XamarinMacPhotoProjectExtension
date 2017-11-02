@@ -1,0 +1,31 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebug-NOGPU/
+[Dd]ebug-GPU/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]elease-NOGPU/
+[Rr]elease-GPU/
+x64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user

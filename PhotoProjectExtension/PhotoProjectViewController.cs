@@ -2,6 +2,7 @@
 using Foundation;
 using AppKit;
 using PhotosUI;
+using System.Collections.Generic;
 
 namespace PhotoProjectExtension
 {
@@ -24,17 +25,20 @@ namespace PhotoProjectExtension
             // Do any additional setup after loading the view.
         }
 
-        // This is not being called for some reason... what is this... PHProjectExtensionController_Extensions.GetSupportedProjectTypes(this);
+        [Export("supportedProjectTypes")]
         public PHProjectTypeDescription[] GetSupportedProjectTypes()
         {
-            PHProjectTypeDescription desc = new PHProjectTypeDescription((NSString)"PHProjectTypeUndefined", "my title", "my desc", null);
-    
-            var types = new PHProjectTypeDescription[] { desc };
-            // Fill the array with PHProjectTypeDescription instances representing you project types.
-            // If you don't want to support custom project types set PHProjectExtensionDefinesProjectTypes to NO in the extension's Info.plist NSExtensionAttributes dictionary.
-            return types;
+            var result = new List<PHProjectTypeDescription>();
+            InvokeOnMainThread(() =>
+            {
+                result.Add(new PHProjectTypeDescription(new NSString("PHProjectTypeUndefined"), "my title", "my desc", null));
+                // Fill the array with PHProjectTypeDescription instances representing you project types.
+                // If you don't want to support custom project types set PHProjectExtensionDefinesProjectTypes to NO in the extension's Info.plist NSExtensionAttributes dictionary.
+            });
+            return result.ToArray();
         }
 
+        [Export("beginProjectWithExtensionContext:projectInfo:completion:")]
         public void BeginProject(PHProjectExtensionContext extensionContext, PHProjectInfo projectInfo, Action<NSError> completion)
         {
             InvokeOnMainThread(() =>
@@ -44,19 +48,24 @@ namespace PhotoProjectExtension
             });
         }
 
+        [Export("resumeProjectWithExtensionContext:completion:")]
         public void ResumeProject(PHProjectExtensionContext extensionContext, Action<NSError> completion)
         {
             InvokeOnMainThread(() =>
             {
-                // do initialization here
+                // do resume here
                 completion(null);
             });
         }
 
+        [Export("finishProjectWithCompletionHandler:")]
         public void FinishProject(Action completion)
         {
-            // do any finalization here
-            completion();
+            InvokeOnMainThread(() =>
+            {
+                // do finalization here
+                completion();
+            });
         }
 
         public PHProjectExtensionContext GetProjectExtensionContext()
